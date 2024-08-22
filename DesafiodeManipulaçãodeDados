@@ -1,0 +1,27 @@
+import java.text.DecimalFormat
+
+fun main() {
+
+    var nome: String = "Webcam Fifine"
+    var preco: Int = 180
+    var QuantProd: Int = 2
+    var TotalProd: Double = 360.0
+    var taxa: Int = 40
+    var LucroDesej: Int = 60
+    var MargLucro: Double = 1.60
+    var PrecoSemImposto = TotalProd
+    var PrecoComImposto = TotalProd * 1.40
+    var PrecoSugerido = TotalProd * 1.60
+
+    val df = DecimalFormat("#,###.00")
+
+    println()
+
+    println("Produto Comprado: $nome")
+    println("Preco do $nome: $preco ")
+    println("Quantidade comprada: $QuantProd")
+    println("O imposto é de: $taxa%")
+    println("Lucro desejado: $LucroDesej%")
+    println("O valor total sem imposto é de: ${df.format(PrecoSemImposto)} e com impostos será de: ${df.format(PrecoComImposto)}")
+    println("Preço sugerido é: ${df.format(PrecoSugerido)}")
+}
