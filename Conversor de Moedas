@@ -1,62 +1,3 @@
-package com.example.conversormoedas
-
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-@Suppress("NAME_SHADOWING")
-class MainActivity : AppCompatActivity() {
-    @SuppressLint("CutPasteId", "SetTextI18n", "MissingInflatedId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        val resultado = findViewById<TextView>(R.id.txtResultado)
-        val valorInformado = findViewById<EditText>(R.id.valorInfo)
-        val taxaConversao = findViewById<EditText>(R.id.taxaConversao)
-        val botaoConversao = findViewById<Button>(R.id.btnConversao)
-
-        botaoConversao.setOnClickListener {
-
-            val valorInfo = valorInformado.text.toString()
-            val taxaConv = taxaConversao.text.toString()
-
-
-            if (valorInfo.isNotEmpty() && taxaConv.isNotEmpty()) {
-                val soma = valorInfo.toDouble() * taxaConv.toDouble()
-                resultado.text = "$soma"
-            } else {
-                resultado.text = "Informe ambos os valores"
-            }
-        }
-
-        fun limparValores() {
-
-                val resultado = findViewById<TextView>(R.id.txtResultado)
-                val input = findViewById<EditText>(R.id.valorInfo)
-
-                resultado.text = ("")
-                input.setText("")
-
-
-            }
-    }
-}
-
--------------------
-
 XML:
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -128,3 +69,62 @@ XML:
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+------------------------------
+
+package com.example.conversormoedas
+
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+@Suppress("NAME_SHADOWING")
+class MainActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId", "SetTextI18n", "MissingInflatedId")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        val resultado = findViewById<TextView>(R.id.txtResultado)
+        val valorInformado = findViewById<EditText>(R.id.valorInfo)
+        val taxaConversao = findViewById<EditText>(R.id.taxaConversao)
+        val botaoConversao = findViewById<Button>(R.id.btnConversao)
+
+        botaoConversao.setOnClickListener {
+
+            val valorInfo = valorInformado.text.toString()
+            val taxaConv = taxaConversao.text.toString()
+
+
+            if (valorInfo.isNotEmpty() && taxaConv.isNotEmpty()) {
+                val soma = valorInfo.toDouble() * taxaConv.toDouble()
+                resultado.text = "$soma"
+            } else {
+                resultado.text = "Informe ambos os valores"
+            }
+        }
+
+        fun limparValores() {
+
+                val resultado = findViewById<TextView>(R.id.txtResultado)
+                val input = findViewById<EditText>(R.id.valorInfo)
+
+                resultado.text = ("")
+                input.setText("")
+
+
+            }
+    }
+}
