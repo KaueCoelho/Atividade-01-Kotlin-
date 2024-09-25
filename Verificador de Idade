@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
             } else {
-                resultado.setText("Informe um valor")
+                resultado.setText("Informe sua idade")
             }
 
 
